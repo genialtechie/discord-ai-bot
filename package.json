@@ -1,0 +1,35 @@
+{
+  "name": "magpollo-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot powered by ElizaOS and Rogue Rose for crypto watchlists and document summarization",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "crypto",
+    "eliza",
+    "rogue-rose"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elizaos/core": "^0.1.6-alpha.4",
+    "@elizaos/adapter-supabase": "^0.1.6-alpha.4",
+    "@supabase/supabase-js": "^2.39.3",
+    "@types/node": "^20.11.16",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1",
+    "pdf-parse": "^1.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0"
+  }
+}
