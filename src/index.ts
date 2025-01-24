@@ -16,6 +16,7 @@ import { getTokenForProvider } from './utils/util_functions.ts';
 import { DirectClient } from '@elizaos/client-direct';
 import net from 'net';
 import { startChat } from './services/chat/index.ts';
+import { env } from './config/env.js';
 let nodePlugin: NodePlugin;
 
 const createAgent = async (
@@ -47,7 +48,12 @@ const startAgent = async (client: DirectClient) => {
     character.username ??= character.name;
 
     const token = getTokenForProvider(character.modelProvider, character);
-    const db = initializeDatabase();
+
+    if (!env.supabase.url || !env.supabase.key) {
+      elizaLogger.error('Supabase URL or key is not set');
+      throw new Error('Supabase URL or key is not set');
+    }
+    const db = initializeDatabase(env.supabase.url!, env.supabase.key!);
     await db.init();
     elizaLogger.info('Database initialized');
     const cache = initializeDbCache(character, db);
