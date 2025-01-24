@@ -1,12 +1,16 @@
 import { config } from 'dotenv';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Load environment variables
 config({ path: resolve(__dirname, '../../.env') });
 
 // Required environment variables
 const requiredEnvVars = [
-  'DISCORD_TOKEN',
+  'DISCORD_API_TOKEN',
   'DISCORD_APPLICATION_ID',
   'OPENROUTER_API_KEY',
   'SUPABASE_URL',
@@ -22,7 +26,7 @@ for (const envVar of requiredEnvVars) {
 
 export const env = {
   discord: {
-    token: process.env.DISCORD_TOKEN!,
+    apiToken: process.env.DISCORD_API_TOKEN!,
     applicationId: process.env.DISCORD_APPLICATION_ID!,
   },
   openrouter: {
